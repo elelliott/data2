@@ -44,9 +44,9 @@ public class FiniteBags {
         return tree;
     }
 
-    /////////////////////////////////////////////
-    /////// POLYMORHIC FINITE SET TESTING ///////
-    /////////////////////////////////////////////
+    //////////////////////////////////////////////
+    /////// POLYMORPHIC FINITE SET TESTING ///////
+    //////////////////////////////////////////////
     // for all x y s, x.union(y).subset(s) = x.subset(s) && y.subset(s)
     public static void checkUnionSubset(FiniteBag x, FiniteBag y, FiniteBag s) {
         for (int i = 0; i < 15; i++) {
@@ -193,13 +193,14 @@ public class FiniteBags {
     ////////////////////////////////////////////
     /////// POLYMORPHIC MULTISET TESTING ///////
     ////////////////////////////////////////////
-    // for some bag t, elt x and count c, c == t.addMultiple(x, c).countElt(x)
+    // for some bag t, elt x and count c, c + t.countElt(x)
+    //     == t.addMultiple(x, c).countElt(x)
     public static void checkAddMultiInt(FiniteBag<Integer> t) {
         for (int i = 0; i < 15; i++) {
             int countVal = randomizer.nextInt(5);
             int x = randomizer.nextInt() % 50;
             boolean answer = t.addMultiple(x, countVal).countElt(x)
-                    == countVal;
+                    == countVal + t.countElt(x);
             System.out.println(answer + " should be " + true);
         }
     }
@@ -209,7 +210,7 @@ public class FiniteBags {
             int countVal = randomizer.nextInt(5);
             String x = randomString();
             boolean answer = t.addMultiple(x, countVal).countElt(x)
-                    == countVal;
+                    == countVal + t.countElt(x);
             System.out.println(answer + " should be " + true);
         }
     }

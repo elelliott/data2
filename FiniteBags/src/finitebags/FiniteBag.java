@@ -5,6 +5,7 @@ import sequence.*;
 public interface FiniteBag<D extends Comparable> extends Sequenced<D> {
     
     // METHODS
+    /* Sequence<D> seq(); */
     FiniteBag<D> empty();
     int cardinality();
     int countElt(D elt);

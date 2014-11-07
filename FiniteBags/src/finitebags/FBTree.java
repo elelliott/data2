@@ -70,7 +70,7 @@ public class FBTree<D extends Comparable> implements FiniteBag<D>, Sequence<D> {
 
     public FBTree addInner(D elt, int count) {
         if (this.root.equals(elt)) {
-            return new FBTree(this.color, this.root, count,
+            return new FBTree(this.color, this.root, count + this.countElt(elt),
                     this.left, this.right);
         } else if (this.root.compareTo(elt) > 0) {
             return balance(this.color, this.root, this.count,
@@ -87,7 +87,7 @@ public class FBTree<D extends Comparable> implements FiniteBag<D>, Sequence<D> {
 
     public FBTree balance(char color, D elt, int count,
             FiniteBag left, FiniteBag right) {
-        // Case: T(B, k, v, T(R, k, v, T(R, k, v, l, r), r), r)
+        
         if (color == 'b'
                 && left instanceof FBTree
                 && ((FBTree) left).getColor() == 'r'
