@@ -173,10 +173,10 @@ public class FBTree<D extends Comparable> implements FiniteBag<D>, Sequence<D> {
                     return this.left.union(this.right);
                 }
             } else if (this.root.compareTo(elt) > 0) {
-                return new FBTree(this.color, this.root,
+                return new FBTree(this.color, this.root, this.count,
                         this.left.removeMultiple(elt, count), this.right);
             } else {
-                return new FBTree(this.color, this.root,
+                return new FBTree(this.color, this.root, this.count,
                         this.left, this.right.removeMultiple(elt, count));
             }
         } else {

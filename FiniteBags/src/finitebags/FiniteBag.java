@@ -18,6 +18,7 @@ public interface FiniteBag<D extends Comparable> extends Sequenced<D> {
     FiniteBag<D> blacken();
     FiniteBag<D> remove(D elt);
     FiniteBag<D> removeMultiple(D elt, int count);
+    FiniteBag<D> removeAll(D elt);
     FiniteBag<D> union(FiniteBag<D> b);
     FiniteBag<D> inter(FiniteBag<D> b);
     FiniteBag<D> diff(FiniteBag<D> b);

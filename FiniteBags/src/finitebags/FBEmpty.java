@@ -62,6 +62,10 @@ public class FBEmpty<D extends Comparable> implements FiniteBag<D>, Sequence<D> 
         return this;
     }
     
+    public FiniteBag<D> removeAll(D elt) {
+        return this;
+    }
+    
     public FiniteBag<D> union(FiniteBag b) {
         return b;
     }
