@@ -1,6 +1,7 @@
 package finitebags;
+import sequence.*;
 
-public class FBTree<D extends Comparable> implements FiniteBag<D> {
+public class FBTree<D extends Comparable> implements FiniteBag<D>, Sequence<D> {
 
     D root;
     int count;
@@ -37,6 +38,10 @@ public class FBTree<D extends Comparable> implements FiniteBag<D> {
         }
     }
 
+    public char getColor() {
+        return this.color;
+    }
+
     public boolean isEmpty() {
         return false;
     }
@@ -57,10 +62,6 @@ public class FBTree<D extends Comparable> implements FiniteBag<D> {
 
     public boolean subset(FiniteBag b) {
         return b.member(this.root) && this.left.subset(b) && this.right.subset(b);
-    }
-
-    public char getColor() {
-        return this.color;
     }
 
     public FiniteBag<D> add(D elt) {
@@ -208,6 +209,20 @@ public class FBTree<D extends Comparable> implements FiniteBag<D> {
         } else {
             return this.left.union(this.right).diff(b);
         }
+    }
+    
+    // Sequence stuff
+    
+    public Sequence seq() {
+        return this;
+    }
+    
+    public D here() {
+        return this.root;
+    }
+    
+    public Sequence next() {
+        return new SeqCat(this.left.seq(), this.right.seq());
     }
 
 }

@@ -1,6 +1,7 @@
 package finitebags;
+import sequence.*;
 
-public class FBEmpty<D extends Comparable> implements FiniteBag<D> {
+public class FBEmpty<D extends Comparable> implements FiniteBag<D>, Sequence<D> {
     
     
     FBEmpty() { }
@@ -71,5 +72,19 @@ public class FBEmpty<D extends Comparable> implements FiniteBag<D> {
     
     public FiniteBag<D> diff(FiniteBag b) {
         return b;
+    }
+    
+    // Sequence stuff
+    
+    public Sequence seq() {
+        return this;
+    }
+    
+    public D here() {
+        return null;
+    }
+    
+    public Sequence next() {
+        return this;
     }
 }

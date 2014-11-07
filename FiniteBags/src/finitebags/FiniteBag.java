@@ -1,6 +1,8 @@
 package finitebags;
 
-public interface FiniteBag<D extends Comparable> {
+import sequence.*;
+
+public interface FiniteBag<D extends Comparable> extends Sequenced<D> {
     
     // METHODS
     FiniteBag<D> empty();
